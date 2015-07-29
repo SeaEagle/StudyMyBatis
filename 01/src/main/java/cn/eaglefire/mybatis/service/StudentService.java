@@ -32,12 +32,13 @@ public class StudentService {
         }
     }
 
-    public void insertStudent(Student student){
+    public int insertStudent(Student student){
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try{
             StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
-            studentMapper.insertStudent(student);
+            int affectedRow = studentMapper.insertStudent(student);
             sqlSession.commit();
+            return affectedRow;
         }finally {
             sqlSession.close();
         }

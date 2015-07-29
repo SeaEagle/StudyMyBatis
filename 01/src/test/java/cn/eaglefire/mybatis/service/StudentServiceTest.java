@@ -44,14 +44,14 @@ public class StudentServiceTest {
 
     @Test
     public void testInsertStudent(){
-        Integer studId = 3;
+        Integer studId = 5;
         Student student = new Student.Builder()
                 .studId(studId)
                 .name("seaeagle")
                 .email("seaeagle@xxx.com")
                 .dob(new Date())
                 .build();
-        studentService.insertStudent(student);
+        System.out.println("insertStudent affect rows: "+studentService.insertStudent(student));
         Student newStudent = studentService.findStudentById(studId);
         Assert.assertNotNull(student);
         System.out.println(newStudent.getStudId()+" "+newStudent.getName()+" "+newStudent.getEmail());
