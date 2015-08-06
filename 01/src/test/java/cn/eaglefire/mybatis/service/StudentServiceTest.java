@@ -1,6 +1,7 @@
 package cn.eaglefire.mybatis.service;
 
 import cn.eaglefire.mybatis.entity.Student;
+import cn.eaglefire.mybatis.util.Pagination;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -29,6 +30,16 @@ public class StudentServiceTest {
     @Test
     public void testFindAllStudents(){
         List<Student> students = studentService.findAllStudents();
+        Assert.assertNotNull(students);
+        for (Student student: students){
+            System.out.println(student.getStudId()+" "+student.getName()+" "+student.getEmail());
+        }
+    }
+
+    @Test
+    public void testFindStudentsByPagination(){
+        Pagination pagination = new Pagination(2, 2);
+        List<Student> students = studentService.findStudentsByPagination(pagination);
         Assert.assertNotNull(students);
         for (Student student: students){
             System.out.println(student.getStudId()+" "+student.getName()+" "+student.getEmail());

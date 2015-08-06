@@ -1,6 +1,7 @@
 package cn.eaglefire.mybatis.mapper;
 
 import cn.eaglefire.mybatis.entity.Student;
+import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ import java.util.List;
 public interface StudentMapper {
 
     public List<Student> findAllStudents();
+
+    public List<Student> findStudentsByPagination(RowBounds rowBounds);
 
     public Student findStudentById(Integer id);
 
